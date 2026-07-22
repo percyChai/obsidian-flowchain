@@ -112,7 +112,7 @@ Download the latest release package from GitHub Releases.
 For the current release, use:
 
 ```text
-flowchain-0.1.1.zip
+flowchain-0.1.2.zip
 ```
 
 Do not use GitHub's auto-generated `Source code (zip)` for manual installation. The source archive is for developers and may not include the built `main.js` file that Obsidian needs to load the plugin.
