@@ -1,0 +1,10 @@
+{
+	"id": "flowchain",
+	"name": "FlowChain",
+	"version": "0.1.0",
+	"minAppVersion": "1.5.0",
+	"description": "A knowledge relationship visualization plugin for Obsidian.",
+	"author": "FlowChain",
+	"authorUrl": "",
+	"isDesktopOnly": true
+}
