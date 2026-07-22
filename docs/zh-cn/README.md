@@ -112,7 +112,7 @@ npm run lint
 当前版本请使用：
 
 ```text
-flowchain-0.1.1.zip
+flowchain-0.1.2.zip
 ```
 
 不要使用 GitHub 自动生成的 `Source code (zip)` 手动安装。源码压缩包面向开发者，可能不包含 Obsidian 加载插件所需的 `main.js`。
