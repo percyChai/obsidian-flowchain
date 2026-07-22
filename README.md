@@ -1,5 +1,7 @@
 # FlowChain
 
+English | [简体中文](docs/zh-cn/README.md)
+
 FlowChain is an Obsidian plugin for generating, synchronizing, laying out, and styling knowledge relationship graphs from Markdown notes.
 
 ## Features
@@ -10,6 +12,7 @@ FlowChain is an Obsidian plugin for generating, synchronizing, laying out, and s
 - Use smart layout recommendations.
 - Beautify Canvas nodes and edges.
 - Support directed and bidirectional relations.
+- Support both English and Chinese Markdown relationship syntax.
 
 ## Demo
 
@@ -32,26 +35,48 @@ Each Markdown file represents one graph node.
 ```md
 # Node name
 
-类型：疾病节点
+Type: Disease
 
-## 下游关系
+## Downstream Relations
 
 - [[Another node]]
 
-## 双向关系
+## Bidirectional Relations
 
 - [[Bidirectional node]]
 
-描述：
+Description:
 Additional notes can span multiple lines.
+```
+
+Chinese syntax is also supported:
+
+```md
+# 节点名称
+
+类型：疾病
+
+## 下游关系
+
+- [[下游节点]]
+
+## 双向关系
+
+- [[双向节点]]
+
+描述：
+可多行记录其它信息。
 ```
 
 Rules:
 
-- `## 下游关系` creates directed downstream edges.
-- `## 双向关系` creates bidirectional edges.
+- `Type:` or `类型：` defines the node type.
+- `## Downstream Relations` or `## 下游关系` creates directed downstream edges.
+- `## Bidirectional Relations` or `## 双向关系` creates bidirectional edges.
 - Bidirectional relations may be declared in both files. FlowChain creates one shared bidirectional edge.
-- `描述：` is only descriptive text and is not used to define relations.
+- `Description:` or `描述：` is only descriptive text and is not used to define relations.
+
+See [Markdown Format](docs/Markdown%20Format.md) for the complete syntax reference.
 
 ## Commands
 

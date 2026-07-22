@@ -182,6 +182,47 @@ export class StyleManager {
 	): keyof StylePalette["nodes"] {
 		const normalized =
 			this.createTypeKey(type);
+		const aliases:
+			Partial<Record<string, keyof StylePalette["nodes"]>> = {
+				"影响因素": "factor",
+				"influencing-factor": "factor",
+				"influence-factor": "factor",
+				factor: "factor",
+				"risk-factor": "factor",
+				机制: "mechanism",
+				mechanism: "mechanism",
+				疾病: "disease",
+				"disease-node": "disease",
+				disease: "disease",
+				症状: "symptom",
+				symptom: "symptom",
+				symptoms: "symptom",
+				药物: "drug",
+				drug: "drug",
+				medicine: "drug",
+				medication: "drug",
+				检查: "test",
+				test: "test",
+				exam: "test",
+				examination: "test",
+				inspection: "test",
+				治疗: "treatment",
+				treatment: "treatment",
+				therapy: "treatment",
+				生活方式: "lifestyle",
+				lifestyle: "lifestyle",
+				营养: "nutrition",
+				nutrition: "nutrition",
+				其它: "other",
+				其他: "other",
+				other: "other"
+			};
+		const alias =
+			aliases[normalized];
+
+		if (alias) {
+			return alias;
+		}
 
 		switch (normalized) {
 			case "影响因素":

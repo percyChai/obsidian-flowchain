@@ -16,13 +16,31 @@ type RelationSection =
 const DOWNSTREAM_HEADINGS =
 	new Set([
 		"## 下游关系",
-		"## 涓嬫父鍏崇郴"
+		"## downstream relations",
+		"## downstream relation",
+		"## downstream",
+		"## outgoing relations",
+		"## outgoing relation",
+		"## outgoing",
+		"## relations",
+		"## related to",
+		"## 涓嬫父鍏崇郴",
+		"## 娑撳鐖堕崗宕囬兇"
 	]);
 
 const BIDIRECTIONAL_HEADINGS =
 	new Set([
 		"## 双向关系",
-		"## 鍙屽悜鍏崇郴"
+		"## bidirectional relations",
+		"## bidirectional relation",
+		"## bidirectional",
+		"## mutual relations",
+		"## mutual relation",
+		"## mutual",
+		"## two-way relations",
+		"## two-way relation",
+		"## 鍙屽悜鍏崇郴",
+		"## 閸欏苯鎮滈崗宕囬兇"
 	]);
 
 export class MarkdownParser implements IParser {
@@ -62,14 +80,16 @@ export class MarkdownParser implements IParser {
 			const trimmedLine = line.trim();
 
 			if (
-				DOWNSTREAM_HEADINGS.has(trimmedLine)
+				this.isDownstreamHeading(
+					trimmedLine
+				)
 			) {
 				section = "downstream";
 				continue;
 			}
 
 			if (
-				BIDIRECTIONAL_HEADINGS.has(
+				this.isBidirectionalHeading(
 					trimmedLine
 				)
 			) {
@@ -134,7 +154,7 @@ export class MarkdownParser implements IParser {
 	): EntityType {
 		const match =
 			content.match(
-				/^(?:类型|绫诲瀷)[：:锛?]\s*(.+)$/m
+				/^(?:类型|type|entity type|node type|绫诲瀷|缁鐎?)[：:锛?閿?]\s*(.+)$/im
 			);
 		const sourceType =
 			match?.[1]?.trim();
@@ -168,7 +188,7 @@ export class MarkdownParser implements IParser {
 		const inlineDescription =
 			firstLine
 				.replace(
-					/^.*?(?:描述|鎻忚堪)[：:锛?]/,
+					/^.*?(?:描述|description|desc|notes|note|鎻忚堪|閹诲繗鍫?)[：:锛?閿?]/i,
 					""
 				)
 				.trim();
@@ -192,9 +212,34 @@ export class MarkdownParser implements IParser {
 	private isDescriptionLine(
 		line: string
 	): boolean {
-		return /^(?:描述|鎻忚堪)[：:锛?]/.test(
+		return /^(?:描述|description|desc|notes|note|鎻忚堪|閹诲繗鍫?)[：:锛?閿?]/i.test(
 			line
 		);
+	}
+
+	private isDownstreamHeading(
+		line: string
+	): boolean {
+		return DOWNSTREAM_HEADINGS.has(
+			this.normalizeHeading(line)
+		);
+	}
+
+	private isBidirectionalHeading(
+		line: string
+	): boolean {
+		return BIDIRECTIONAL_HEADINGS.has(
+			this.normalizeHeading(line)
+		);
+	}
+
+	private normalizeHeading(
+		line: string
+	): string {
+		return line
+			.replace(/\s+/g, " ")
+			.trim()
+			.toLowerCase();
 	}
 
 	private parseRelationTarget(
