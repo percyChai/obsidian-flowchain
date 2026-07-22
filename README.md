@@ -11,6 +11,20 @@ FlowChain is an Obsidian plugin for generating, synchronizing, laying out, and s
 - Beautify Canvas nodes and edges.
 - Support directed and bidirectional relations.
 
+## Demo
+
+### Markdown format
+
+![Markdown format demo](docs/assets/md格式类型.gif)
+
+### Generate graph
+
+![Generate graph demo](docs/assets/生成关系图.gif)
+
+### Switch layout mode
+
+![Switch layout mode demo](docs/assets/切换布局模式.gif)
+
 ## Markdown Format
 
 Each Markdown file represents one graph node.
