@@ -68,16 +68,28 @@ The production build outputs `main.js` at the plugin root.
 
 ## Manual Installation
 
-Copy these files into your vault plugin folder:
+Download the latest release package from GitHub Releases.
+
+For the current release, use:
+
+```text
+flowchain-0.1.1.zip
+```
+
+Do not use GitHub's auto-generated `Source code (zip)` for manual installation. The source archive is for developers and may not include the built `main.js` file that Obsidian needs to load the plugin.
+
+Extract the release zip into:
 
 ```text
 <Vault>/.obsidian/plugins/flowchain/
 ```
 
-Required files:
+After extraction, the plugin folder should contain:
 
-- `main.js`
-- `manifest.json`
-- `styles.css`
+```text
+<Vault>/.obsidian/plugins/flowchain/main.js
+<Vault>/.obsidian/plugins/flowchain/manifest.json
+<Vault>/.obsidian/plugins/flowchain/styles.css
+```
 
 Then reload Obsidian and enable FlowChain in **Settings -> Community plugins**.
